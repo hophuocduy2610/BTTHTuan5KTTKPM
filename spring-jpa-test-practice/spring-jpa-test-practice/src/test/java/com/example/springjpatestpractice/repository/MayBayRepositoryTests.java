@@ -12,4 +12,9 @@ public class MayBayRepositoryTests {
     void cau2(){
         System.out.println(mayBayRepository.findLoaiMayBayByTamBay());
     }
+
+    @Test
+    void cau7(){
+        System.out.println("Có " + mayBayRepository.findLoaiMayBay() + " máy bay Boeing");
+    }
 }
