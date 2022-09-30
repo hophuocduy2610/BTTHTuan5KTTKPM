@@ -1,9 +1,8 @@
 package com.example.springjpatestpractice.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,14 +11,13 @@ import javax.persistence.Table;
 import java.sql.Time;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
 @Table(name = "chuyenbay")
 public class ChuyenBay {
     @Id
-    @Column(name = "macb")
+    @Column(name = "maCB")
     public String maCB;
     @Column(name = "gadi")
     public String gaDi;

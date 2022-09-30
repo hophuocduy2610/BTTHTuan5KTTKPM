@@ -1,15 +1,13 @@
 package com.example.springjpatestpractice.entity;
 
 import jdk.jfr.Enabled;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.persistence.Table;
 
 @Enabled
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
