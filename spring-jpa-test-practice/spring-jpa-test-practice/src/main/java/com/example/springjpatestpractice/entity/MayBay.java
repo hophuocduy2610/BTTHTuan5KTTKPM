@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Data
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 @Setter
 @Getter
 @Table(name = "maybay")
-public class MayBay {
+public class MayBay implements Serializable {
     @Id
     @Column(name = "mamb")
     public int maMB;

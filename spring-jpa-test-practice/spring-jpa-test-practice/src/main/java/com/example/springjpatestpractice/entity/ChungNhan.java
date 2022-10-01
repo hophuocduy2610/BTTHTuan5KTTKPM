@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Enabled
 @Data
@@ -14,14 +15,14 @@ import javax.persistence.Table;
 @Getter
 @Table(name = "chungnhan")
 @IdClass(ChungNhanPK.class)
-public class ChungNhan {
+public class ChungNhan implements Serializable {
     @Id
-    @JoinColumn(name = "manv", columnDefinition = "varchar(10)")
-    @ManyToOne
-    public NhanVien maNV;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "manv", columnDefinition = "varchar(9)")
+    public NhanVien MaNV;
 
     @Id
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mamb", columnDefinition = "int")
-    @ManyToOne
-    public MayBay maMB;
+    public MayBay MaMB;
 }

@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class NhanVienRepositoryTests {
     @Autowired
-    NhanVienRepository nhanVienRepository;
+    private NhanVienRepository nhanVienRepository;
     @Test
     void cau3(){
         System.out.println(nhanVienRepository.findNhanVienByLuong());
@@ -15,5 +15,9 @@ public class NhanVienRepositoryTests {
     @Test
     void cau8(){
         System.out.println("Tổng lương phải trả cho nhân viên: " + nhanVienRepository.tinhTongLuong());
+    }
+    @Test
+    void cau9(){
+        System.out.println(nhanVienRepository.getMaByLoaiMayBay());
     }
 }
