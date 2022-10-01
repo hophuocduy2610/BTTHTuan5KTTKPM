@@ -26,4 +26,8 @@ public interface ChuyenBayRepository extends CrudRepository<ChuyenBay, String> {
     @Query("select cb from ChuyenBay cb " +
             "where cb.gioDi < Time('12:00')")
     List<ChuyenBay> findChuyenBayKhoiHanhTruoc12h();
+    @Query("select cb, count(cb.maCB) as TongChuyenBay from ChuyenBay cb " +
+            "where cb.gioDi < Time('12:00') " +
+            "group by cb.gaDi")
+    List<Object> demChuyenBayKhoiHanhTruoc12h();
 }
