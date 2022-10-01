@@ -17,12 +17,12 @@ import java.io.Serializable;
 @IdClass(ChungNhanPK.class)
 public class ChungNhan implements Serializable {
     @Id
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "manv", columnDefinition = "varchar(9)")
+    @ManyToOne
+    @JoinColumn(name = "manv", columnDefinition = "varchar(10)")
     public NhanVien MaNV;
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "mamb", columnDefinition = "int")
     public MayBay MaMB;
 }
