@@ -23,6 +23,6 @@ public class MayBay implements Serializable {
     @Column(name = "loai")
     public String loai;
 
-    @Column(name = "tambay")
+    @Column(name = "tambay", updatable = false)
     public int tamBay;
 }
