@@ -42,4 +42,9 @@ public class NhanVienRepositoryTests {
     void cau25(){
         System.out.println(nhanVienRepository.findNhanVienKhongPhaiLaPhiCong());
     }
+
+    @Test
+    void cau26(){
+        System.out.println(nhanVienRepository.findNhanVienCoMaxLuong());
+    }
 }

@@ -42,4 +42,8 @@ public interface NhanVienRepository extends CrudRepository<NhanVien, String> {
             "where nv.maNV not in (select cn.MaNV from ChungNhan cn " +
             "group by cn.MaNV )", nativeQuery = true)
     List<NhanVien> findNhanVienKhongPhaiLaPhiCong();
+
+    @Query(value = "select nv.MaNV from NhanVien nv " +
+            "where nv.luong = (select max(nv.luong) from NhanVien nv)", nativeQuery = true)
+    String findNhanVienCoMaxLuong();
 }
