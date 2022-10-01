@@ -42,4 +42,9 @@ public class ChuyenBayRepositoryTests {
     void cau21(){
         System.out.print(chuyenBayRepository.demChuyenBayKhoiHanhTruoc12h());
     }
+
+    @Test
+    void cau28(){
+        System.out.print(chuyenBayRepository.timChuyenBayThucHienBoiTacCaMBBoeing());
+    }
 }
