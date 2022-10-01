@@ -22,4 +22,8 @@ public interface ChuyenBayRepository extends CrudRepository<ChuyenBay, String> {
     @Query("select cb from ChuyenBay cb " +
             "where cb.doDai <= (select mb.tamBay from MayBay mb where mb.loai = 'Airbus A320')")
     List<ChuyenBay> findChuyenBayByMayBayAirbusA320();
+
+    @Query("select cb from ChuyenBay cb " +
+            "where cb.gioDi < Time('12:00')")
+    List<ChuyenBay> findChuyenBayKhoiHanhTruoc12h();
 }
