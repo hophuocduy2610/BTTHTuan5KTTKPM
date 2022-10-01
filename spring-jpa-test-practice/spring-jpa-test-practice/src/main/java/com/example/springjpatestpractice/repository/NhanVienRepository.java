@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface NhanVienRepository extends JpaRepository<NhanVien, String> {
+public interface NhanVienRepository extends CrudRepository<NhanVien, String> {
    @Query("select nv from NhanVien nv where nv.luong < 10000")
     List<NhanVien> findNhanVienByLuong();
     @Query("select Sum(nv.luong) from NhanVien nv")
@@ -35,6 +35,11 @@ public interface NhanVienRepository extends JpaRepository<NhanVien, String> {
     @Query(value = "select nv.maNV from NhanVien nv " +
            "where nv.maNV in (select cn.MaNV from ChungNhan cn " +
            "group by cn.MaNV " +
-           "having count(cn.maMB) >= 3)", nativeQuery = true)
+           "having count(cn.maMB) = 3)", nativeQuery = true)
     List<String> findMaPhiCongLai3LoaiMayBay();
+
+    @Query(value = "select * from NhanVien nv " +
+            "where nv.maNV not in (select cn.MaNV from ChungNhan cn " +
+            "group by cn.MaNV )", nativeQuery = true)
+    List<NhanVien> findNhanVienKhongPhaiLaPhiCong();
 }

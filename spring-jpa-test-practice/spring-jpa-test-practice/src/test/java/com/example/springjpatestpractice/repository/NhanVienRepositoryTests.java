@@ -38,4 +38,8 @@ public class NhanVienRepositoryTests {
         System.out.println(nhanVienRepository.findMaPhiCongLai3LoaiMayBay());
     }
 
+    @Test
+    void cau25(){
+        System.out.println(nhanVienRepository.findNhanVienKhongPhaiLaPhiCong());
+    }
 }
