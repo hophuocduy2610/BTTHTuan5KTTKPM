@@ -28,4 +28,9 @@ public class NhanVienRepositoryTests {
     void cau12(){
         System.out.println(nhanVienRepository.getMaByLoaiMB());
     }
+
+    @Test
+    void cau15(){
+        System.out.println(nhanVienRepository.findTenNhanVienLaiBoeing());
+    }
 }
