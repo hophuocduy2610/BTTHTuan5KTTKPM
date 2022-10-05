@@ -241,4 +241,13 @@ public class ApiController {
         }
         return  phiCongVoiSoLuong;
     }
+    //Cau 25
+    @RequestMapping(value = "/timnhanvienkhonglaphicong", method = RequestMethod.GET)
+    public List<NhanVien> timNhanVienKhongPhaiLaPhiCong(){
+        List<NhanVien> nhanViens = nhanVienRepository.findNhanVienKhongPhaiLaPhiCong();
+        if(nhanViens == null){
+            ResponseEntity.notFound().build();
+        }
+        return  nhanViens;
+    }
 }
