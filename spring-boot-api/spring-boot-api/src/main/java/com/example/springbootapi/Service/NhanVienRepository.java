@@ -9,4 +9,7 @@ import java.util.List;
 public interface NhanVienRepository extends CrudRepository<NhanVien, String> {
     @Query("select nv from NhanVien nv where nv.luong < 10000")
     List<NhanVien> findNhanVienByLuong();
+    @Query("select Sum(nv.luong) from NhanVien nv")
+    int tinhTongLuong();
+
 }
