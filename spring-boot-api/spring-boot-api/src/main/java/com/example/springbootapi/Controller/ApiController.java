@@ -24,6 +24,7 @@ public class ApiController {
     NhanVienRepository nhanVienRepository;
     @Autowired
     MayBayRepository mayBayRepository;
+
     //Cau 1
     @RequestMapping(value = "/timchuyenbayboigaden/{gaden}", method = RequestMethod.GET)
     public List<ChuyenBay> timChuyenBayBoiGaDen(@PathVariable("gaden") String gaDen){
@@ -230,5 +231,14 @@ public class ApiController {
             ResponseEntity.notFound().build();
         }
         return  maVaTamBays;
+    }
+    //Cau 24
+    @RequestMapping(value = "/phicongvasoluongmaybaycothelai", method = RequestMethod.GET)
+    public List<Map<String, Object>> phiCongVoiSoLuongMBCoTheLai(){
+        List<Map<String, Object>> phiCongVoiSoLuong = nhanVienRepository.phiCongVoiSoLuongMBCoTheLai();
+        if(phiCongVoiSoLuong == null){
+            ResponseEntity.notFound().build();
+        }
+        return  phiCongVoiSoLuong;
     }
 }

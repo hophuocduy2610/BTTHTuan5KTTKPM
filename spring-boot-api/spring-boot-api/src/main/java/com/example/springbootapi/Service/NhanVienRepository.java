@@ -42,4 +42,6 @@ public interface NhanVienRepository extends CrudRepository<NhanVien, String> {
             "group by c.MaNV " +
             "having count(c.MaMB) >= 3", nativeQuery = true)
     public List<Map<String, Object>> findMaNhanVienLai3LoaiMBVaTamBayLonNhat();
+    @Query(value = "select cn.MaNV, count(cn.MaMB) as SoLuongLoaiMayBayCoTheLai from chungnhan cn group by cn.MaNV", nativeQuery = true)
+    List<Map<String, Object>> phiCongVoiSoLuongMBCoTheLai();
 }
