@@ -105,4 +105,13 @@ public class ApiController {
         }
         return  maNhanViens;
     }
+    //Cau 10
+    @RequestMapping(value = "/nhanvienlaimaybay747/{maMB}", method = RequestMethod.GET)
+    public List<NhanVien> nhanVienLaiMayBay747(@PathVariable("maMB") int maMB){
+        List<NhanVien> nhanViens = nhanVienRepository.findNhanVienByMaMB(maMB);
+        if(nhanViens == null){
+            ResponseEntity.notFound().build();
+        }
+        return  nhanViens;
+    }
 }
