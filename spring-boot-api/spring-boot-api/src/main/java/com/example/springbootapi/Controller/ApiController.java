@@ -215,4 +215,13 @@ public class ApiController {
         }
         return  chuyenBays;
     }
+    //Cau 22
+    @RequestMapping(value = "/timphicongchilaibaloaimaybay", method = RequestMethod.GET)
+    public List<String> timPhiCongChiLai3LoaiMB(){
+        List<String> maPhiCongs = nhanVienRepository.findMaPhiCongLai3LoaiMayBay();
+        if(maPhiCongs == null){
+            ResponseEntity.notFound().build();
+        }
+        return  maPhiCongs;
+    }
 }
