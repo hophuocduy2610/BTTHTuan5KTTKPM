@@ -250,4 +250,13 @@ public class ApiController {
         }
         return  nhanViens;
     }
+    //Cau 26
+    @RequestMapping(value = "/timnhanviencoluongcaonhat", method = RequestMethod.GET)
+    public String timNhanVienMaxLuong(){
+        String maNV = nhanVienRepository.findNhanVienCoMaxLuong();
+        if(maNV == ""){
+            ResponseEntity.notFound().build();
+        }
+        return  maNV;
+    }
 }
