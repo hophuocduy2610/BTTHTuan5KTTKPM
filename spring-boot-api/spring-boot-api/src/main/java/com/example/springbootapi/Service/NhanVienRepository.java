@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Map;
 
 public interface NhanVienRepository extends CrudRepository<NhanVien, String> {
     @Query("select nv from NhanVien nv where nv.luong < 10000")
@@ -33,4 +34,12 @@ public interface NhanVienRepository extends CrudRepository<NhanVien, String> {
             "group by cn.MaNV " +
             "having count(cn.maMB) = 3)", nativeQuery = true)
     List<String> findMaPhiCongLai3LoaiMayBay();
+
+    @Query(value = "select n.maNV as maNV, max(m.tamBay) as tamBayLonNhat " +
+            "from NhanVien n, ChungNhan c, MayBay m " +
+            "where n.maNV = c.MaNV  " +
+            "and c.MaMB = m.maMB " +
+            "group by c.MaNV " +
+            "having count(c.MaMB) >= 3", nativeQuery = true)
+    public List<Map<String, Object>> findMaNhanVienLai3LoaiMBVaTamBayLonNhat();
 }

@@ -1,7 +1,6 @@
 package com.example.springbootapi.Controller;
 
 import com.example.springbootapi.Entity.ChuyenBay;
-import com.example.springbootapi.Entity.MayBay;
 import com.example.springbootapi.Entity.NhanVien;
 import com.example.springbootapi.Service.ChuyenBayRepository;
 import com.example.springbootapi.Service.MayBayRepository;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -223,5 +221,14 @@ public class ApiController {
             ResponseEntity.notFound().build();
         }
         return  maPhiCongs;
+    }
+    //Cau 23
+    @RequestMapping(value = "/mavatambaylonnhatcuaphiconglaihon3loaimaybay", method = RequestMethod.GET)
+    public List<Map<String, Object>> maVaTamBayLonNhatVoiPhiCongLaiNhieuHonBaLoaiMayBay(){
+        List<Map<String, Object>> maVaTamBays = nhanVienRepository.findMaNhanVienLai3LoaiMBVaTamBayLonNhat();
+        if(maVaTamBays == null){
+            ResponseEntity.notFound().build();
+        }
+        return  maVaTamBays;
     }
 }
