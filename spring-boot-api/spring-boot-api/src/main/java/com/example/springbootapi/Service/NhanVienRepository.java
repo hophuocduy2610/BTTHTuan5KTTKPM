@@ -11,5 +11,8 @@ public interface NhanVienRepository extends CrudRepository<NhanVien, String> {
     List<NhanVien> findNhanVienByLuong();
     @Query("select Sum(nv.luong) from NhanVien nv")
     int tinhTongLuong();
+    @Query(value = "select nv.maNV from ChungNhan cn, MayBay mb, NhanVien nv " +
+            "where nv.maNV = cn.MaNV and mb.maMB = cn.MaMB and mb.loai like 'Boeing%'", nativeQuery = true)
+    List<String> getMaByLoaiMayBay();
 
 }
