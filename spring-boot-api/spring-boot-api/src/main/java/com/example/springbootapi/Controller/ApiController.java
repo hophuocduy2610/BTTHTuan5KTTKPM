@@ -268,4 +268,13 @@ public class ApiController {
         }
         return  "Tổng lương của các phi công là " + luongPC;
     }
+    //Cau 28
+    @RequestMapping(value = "/timchuyenbaythuchienboicacmaybayboeing", method = RequestMethod.GET)
+    public List<ChuyenBay> timChuyenBayThucHienBoiTacCaMBBoeing(){
+        List<ChuyenBay> chuyenBays = chuyenBayRepository.timChuyenBayThucHienBoiTacCaMBBoeing();
+        if(chuyenBays == null){
+            ResponseEntity.notFound().build();
+        }
+        return  chuyenBays;
+    }
 }

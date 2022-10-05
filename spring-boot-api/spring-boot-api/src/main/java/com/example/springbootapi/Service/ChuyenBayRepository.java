@@ -32,4 +32,9 @@ public interface ChuyenBayRepository extends CrudRepository<ChuyenBay, String> {
             "where cb.gioDi < Time('12:00') " +
             "group by cb.gaDi", nativeQuery = true)
     List<Map<String, Object>> demChuyenBayKhoiHanhTruoc12h();
+    @Query("select cb from ChuyenBay cb " +
+            "where cb.doDai " +
+            "between (select min(mb.tamBay) from MayBay mb where mb.loai like 'Boeing%') " +
+            "and (select max(mb.tamBay) from MayBay mb where mb.loai like 'Boeing%')")
+    List<ChuyenBay> timChuyenBayThucHienBoiTacCaMBBoeing();
 }
