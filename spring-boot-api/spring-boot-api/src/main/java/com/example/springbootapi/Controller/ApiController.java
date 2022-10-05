@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -158,5 +160,14 @@ public class ApiController {
             ResponseEntity.notFound().build();
         }
         return  tenPhiCongs;
+    }
+    //Cau 16
+    @RequestMapping(value = "/demsophiconglaimaybay", method = RequestMethod.GET)
+    public List<Map<String, Object>> demSoPhiCongLaiMayBay(){
+        List<Map<String, Object>> mayBays = mayBayRepository.demSoPhiCongLaiMayBay();
+        if(mayBays== null){
+            ResponseEntity.notFound().build();
+        }
+        return  mayBays;
     }
 }
