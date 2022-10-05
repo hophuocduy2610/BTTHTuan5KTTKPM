@@ -2,8 +2,10 @@ package com.example.springbootapi.Controller;
 
 import com.example.springbootapi.Entity.ChuyenBay;
 import com.example.springbootapi.Entity.MayBay;
+import com.example.springbootapi.Entity.NhanVien;
 import com.example.springbootapi.Service.ChuyenBayRepository;
 import com.example.springbootapi.Service.MayBayRepository;
+import com.example.springbootapi.Service.NhanVienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +20,11 @@ import java.util.List;
 public class ApiController {
     @Autowired
     ChuyenBayRepository chuyenBayRepository;
-
+    @Autowired
+    NhanVienRepository nhanVienRepository;
     @Autowired
     MayBayRepository mayBayRepository;
+    //Cau 1
     @RequestMapping(value = "/timchuyenbayboigaden/{gaden}", method = RequestMethod.GET)
     public List<ChuyenBay> timChuyenBayBoiGaDen(@PathVariable("gaden") String gaDen){
         List<ChuyenBay> chuyenBays = chuyenBayRepository.findChuyenBayByGaDen(gaDen);
@@ -29,7 +33,7 @@ public class ApiController {
         }
         return chuyenBays;
     }
-
+    //Cau 2
     @RequestMapping(value = "/maybaycotambaylonhon10000", method = RequestMethod.GET)
     public List<String> mayBayCoTamBayLonHon10000(){
         List<String> mayBays = mayBayRepository.findLoaiMayBayByTamBay();
@@ -37,5 +41,14 @@ public class ApiController {
             ResponseEntity.notFound().build();
         }
         return mayBays;
+    }
+    //Cau 3
+    @RequestMapping(value = "/timnhanvientheoluong", method = RequestMethod.GET)
+    public List<NhanVien> timNhanVienTheoLuong(){
+        List<NhanVien> nhanViens = nhanVienRepository.findNhanVienByLuong();
+        if(nhanViens == null){
+            ResponseEntity.notFound().build();
+        }
+        return nhanViens;
     }
 }
