@@ -259,4 +259,13 @@ public class ApiController {
         }
         return  maNV;
     }
+    //Cau 27
+    @RequestMapping(value = "/tongluongchophicong", method = RequestMethod.GET)
+    public String tongLuongChoCacPhiCong(){
+        int luongPC = nhanVienRepository.tinhTongLuongChoPhiCong();
+        if(luongPC == 0){
+            ResponseEntity.notFound().build();
+        }
+        return  "Tổng lương của các phi công là " + luongPC;
+    }
 }

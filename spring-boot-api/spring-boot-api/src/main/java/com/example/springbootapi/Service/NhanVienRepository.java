@@ -51,4 +51,8 @@ public interface NhanVienRepository extends CrudRepository<NhanVien, String> {
     @Query(value = "select nv.MaNV from NhanVien nv " +
             "where nv.luong = (select max(nv.luong) from NhanVien nv)", nativeQuery = true)
     String findNhanVienCoMaxLuong();
+    @Query(value = "select sum(nv.luong) from NhanVien nv " +
+            "where nv.maNV in (select cn.MaNV from ChungNhan cn " +
+            "group by cn.MaNV )", nativeQuery = true)
+    int tinhTongLuongChoPhiCong();
 }
